@@ -52,7 +52,7 @@ public class StringRunner{
 					try {
 						System.out.print("Enter String: ");
 						str=scanner.next();
-						System.out.println("Penultimate character: "+taskObject.getPenultimateChar(str));
+						System.out.println("Penultimate character: "+taskObject.getCharAtIndex(str,str.length()-2));
 					} catch (InvalidArgumentException e) {
 						System.out.println(e.getMessage());
 					}catch (SmallStringException e) {
@@ -105,6 +105,8 @@ public class StringRunner{
 					try {
 						System.out.println("First 3 characters: "+taskObject.getFirstSpecifiedCharacters(str,3));
 					} catch (SmallStringException e) {
+						System.out.println(e.getMessage());
+					} catch (InvalidArgumentException e) {
 						System.out.println(e.getMessage());
 					}
 					break;
@@ -188,7 +190,7 @@ public class StringRunner{
 					System.out.print("Enter a Line with Multiple String: ");
 					str=scanner.nextLine();
 					try {
-						System.out.println("Concatenated String: "+taskObject.concatWithDelimiter(str));
+						System.out.println("Concatenated String: "+taskObject.mereStrings(str));
 					} catch (InvalidArgumentException e) {
 						System.out.println(e.getMessage());
 					}
@@ -224,7 +226,7 @@ public class StringRunner{
 						stringList.add(scanner.nextLine());
 					}
 					try {
-						System.out.println("Merged String: "+taskObject.mergeStrings(stringList,"-"));
+						System.out.println("Merged String: "+taskObject.concatWithDelimiter(stringList,"-"));
 					} catch (InvalidArgumentException e) {
 						System.out.println(e.getMessage());
 					}
