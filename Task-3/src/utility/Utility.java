@@ -19,4 +19,9 @@ public class Utility {
 		checkNull(str);
 		return str.length();
 	}
+
+    public static int getLength(StringBuilder strBuilder) throws InvalidArgumentException{
+		checkNull(strBuilder);
+		return strBuilder.length();
+	}
 }
