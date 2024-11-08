@@ -11,191 +11,193 @@ import utility.Utility;
 public class StringRunner{
 	StringTask taskObject=new StringTask();
 	public static void main(String args[]){
-		StringRunner runnerObject=new StringRunner();
-		int option;
-		Scanner scanner =new Scanner(System.in);
-		boolean flag=true;
-		String str,compareStr;
-		char character;
-		System.out.println("String:");
-		System.out.println("1.Find Length");
-		System.out.println("2.Into Character Array");
-		System.out.println("3.Get Penultimate Character");
-		System.out.println("4.Number of occurrences of a given Character");
-		System.out.println("5.Greatest position of a given Character");
-		System.out.println("6.Get last 5 characters");
-		System.out.println("7.Get first 3 characters");
-		System.out.println("8.Replace first 3 characters with \"XYZ\"");
-		System.out.println("9.Check whether a String starts with \"ent\"");
-		System.out.println("10.Check whether a String ends with \"le\"");
-		System.out.println("11.To Uppercase");
-		System.out.println("12.To Lowercase");
-		System.out.println("13.To Reverse a String");
-		System.out.println("14.To Accept a line with Multiple Strings");
-		System.out.println("15.Concatenate strings without space");
-		System.out.println("16.Into String Array");
-		System.out.println("17.Merge with \"-\"");
-		System.out.println("18.Check Strings(Case-Sensitive)");
-		System.out.println("19.Check Strings(Case-Insensitive)");
-		System.out.println("20.Trim Strings");
-		while(flag){
-			System.out.print("\nEnter Option:");
-			option=scanner.nextInt();
-			scanner.nextLine();
-			switch (option) {
-				case 1:
-					if(args.length!=0){
-						try {
-							System.out.println("String Length: "+Utility.getLength(args[0]));
-						} catch (InvalidArgumentException e) {
-							System.out.println(e.getMessage());
+		try(Scanner scanner = new Scanner(System.in)) {
+			StringRunner runnerObject=new StringRunner();
+			int option;
+			boolean flag=true;
+			String str,compareStr;
+			char character;
+			System.out.println("String:");
+			System.out.println("1.Find Length");
+			System.out.println("2.Into Character Array");
+			System.out.println("3.Get Penultimate Character");
+			System.out.println("4.Number of occurrences of a given Character");
+			System.out.println("5.Greatest position of a given Character");
+			System.out.println("6.Get last 5 characters");
+			System.out.println("7.Get first 3 characters");
+			System.out.println("8.Replace first 3 characters with \"XYZ\"");
+			System.out.println("9.Check whether a String starts with \"ent\"");
+			System.out.println("10.Check whether a String ends with \"le\"");
+			System.out.println("11.To Uppercase");
+			System.out.println("12.To Lowercase");
+			System.out.println("13.To Reverse a String");
+			System.out.println("14.To Accept a line with Multiple Strings");
+			System.out.println("15.Concatenate strings without space");
+			System.out.println("16.Into String Array");
+			System.out.println("17.Merge with \"-\"");
+			System.out.println("18.Check Strings(Case-Sensitive)");
+			System.out.println("19.Check Strings(Case-Insensitive)");
+			System.out.println("20.Trim Strings");
+			while(flag){
+				System.out.print("\nEnter Option:");
+				option=scanner.nextInt();
+				scanner.nextLine();
+				switch (option) {
+					case 1:
+						if(args.length!=0){
+							try {
+								System.out.println("String Length: "+Utility.getLength(args[0]));
+							} catch (InvalidArgumentException e) {
+								System.out.println(e.getMessage());
+							}
+						}else{
+							System.out.println("Give String as Command Line argument");
 						}
-					}else{
-						System.out.println("Give String as Command Line argument");
-					}
-					break;
+						break;
 
-				case 2:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.intoCharArray(str);
-					break;
+					case 2:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.intoCharArray(str);
+						break;
 
-				case 3:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.getPenultimateChar(str);
-					break;
+					case 3:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.getPenultimateChar(str);
+						break;
 
-				case 4:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					scanner.nextLine();
-					System.out.print("Enter Charater: ");
-					character=scanner.nextLine().charAt(0);
-					runnerObject.getCharCount(str, character);
-					break;
+					case 4:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						scanner.nextLine();
+						System.out.print("Enter Charater: ");
+						character=scanner.nextLine().charAt(0);
+						runnerObject.getCharCount(str, character);
+						break;
 
-				case 5:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					scanner.nextLine();
-					System.out.print("Enter Charater: ");
-					character=scanner.nextLine().charAt(0);
-					runnerObject.greatestPositionOfChar(str, character);
-					break;
+					case 5:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						scanner.nextLine();
+						System.out.print("Enter Charater: ");
+						character=scanner.nextLine().charAt(0);
+						runnerObject.greatestPositionOfChar(str, character);
+						break;
 
-				case 6:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.getLastFiveChars(str);
-					break;
+					case 6:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.getLastFiveChars(str);
+						break;
 
-				case 7:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.getFirstThreeChars(str);
-					break;
+					case 7:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.getFirstThreeChars(str);
+						break;
 
-				case 8:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.replaceFirstThreeChars(str);
-					break;
+					case 8:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.replaceFirstThreeChars(str);
+						break;
 
-				case 9:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.startsWithEnt(str);
-					break;
+					case 9:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.startsWithEnt(str);
+						break;
 
-				case 10:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.endsWithEr(str);
-					break;
+					case 10:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.endsWithEr(str);
+						break;
 
-				case 11:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.toUpperCase(str);
-					break;
+					case 11:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.toUpperCase(str);
+						break;
 
-				case 12:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.toLowerCase(str);
-					break;
+					case 12:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.toLowerCase(str);
+						break;
 
-				case 13:
-					System.out.print("Enter String: ");
-					str=scanner.next();
-					runnerObject.reverseString(str);
-					break;
+					case 13:
+						System.out.print("Enter String: ");
+						str=scanner.next();
+						runnerObject.reverseString(str);
+						break;
 
-				case 14:
-					System.out.print("Enter a Line with Multiple String: ");
-					str=scanner.nextLine();
-					runnerObject.acceptStrings(str);
-					break;
+					case 14:
+						System.out.print("Enter a Line with Multiple String: ");
+						str=scanner.nextLine();
+						runnerObject.acceptStrings(str);
+						break;
 
-				case 15:
-					System.out.print("Enter a Line with Multiple String: ");
-					str=scanner.nextLine();
-					runnerObject.mergeStrings(str);
-					break;
+					case 15:
+						System.out.print("Enter a Line with Multiple String: ");
+						str=scanner.nextLine();
+						runnerObject.mergeStrings(str);
+						break;
 
-				case 16:
-					System.out.print("Enter a Line with Multiple String: ");
-					str=scanner.nextLine();
-					System.out.print("{");
-					runnerObject.splitString(str);
-					break;
+					case 16:
+						System.out.print("Enter a Line with Multiple String: ");
+						str=scanner.nextLine();
+						System.out.print("{");
+						runnerObject.splitString(str);
+						break;
 
-				case 17:
-					System.out.print("Enter Number of String: ");
-					int numOfStrings=scanner.nextInt();
-					scanner.nextLine();
-					List<String> stringList=new ArrayList<>();
-					for(int i=0;i<numOfStrings;i++){
-						System.out.print("String "+(i+1)+": ");
-						stringList.add(scanner.nextLine());
-					}
-					runnerObject.concatStrings(stringList);
-					break;
+					case 17:
+						System.out.print("Enter Number of String: ");
+						int numOfStrings=scanner.nextInt();
+						scanner.nextLine();
+						List<String> stringList=new ArrayList<>();
+						for(int i=0;i<numOfStrings;i++){
+							System.out.print("String "+(i+1)+": ");
+							stringList.add(scanner.nextLine());
+						}
+						runnerObject.concatStrings(stringList);
+						break;
 
-				case 18:
-					System.out.print("Enter String 1: ");
-					str=scanner.nextLine();
-					System.out.print("Enter String 2: ");
-					compareStr=scanner.nextLine();
-					runnerObject.compareStrings(str,compareStr);
-					break;
+					case 18:
+						System.out.print("Enter String 1: ");
+						str=scanner.nextLine();
+						System.out.print("Enter String 2: ");
+						compareStr=scanner.nextLine();
+						runnerObject.compareStrings(str,compareStr);
+						break;
 
-				case 19:
-					System.out.print("Enter String 1: ");
-					str=scanner.nextLine();
-					System.out.print("Enter String 2: ");
-					compareStr=scanner.nextLine();
-					runnerObject.compareStringsIgnoreCase(str, compareStr);
-					break;
+					case 19:
+						System.out.print("Enter String 1: ");
+						str=scanner.nextLine();
+						System.out.print("Enter String 2: ");
+						compareStr=scanner.nextLine();
+						runnerObject.compareStringsIgnoreCase(str, compareStr);
+						break;
 
-				case 20:
-					System.out.print("Enter String: ");
-					str=scanner.nextLine();
-					runnerObject.trimString(str);
-					break;
+					case 20:
+						System.out.print("Enter String: ");
+						str=scanner.nextLine();
+						runnerObject.trimString(str);
+						break;
 
-				case 21:
-					flag=false;
-					break;
-			
-				default:
-					System.out.println("Enter valid option...");
-					break;
+					case 21:
+						flag=false;
+						break;
+				
+					default:
+						System.out.println("Enter valid option...");
+						break;
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		scanner.close();
 	}
 	public void intoCharArray(String str){
 		try{

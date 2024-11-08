@@ -100,14 +100,10 @@ public class StringTask{
 	}
 
 	public String concatWithDelimiter(String[] strings, String delimiter) throws InvalidArgumentException{
-		Utility.checkNull(delimiter);
-		Utility.checkNull(strings);
-		return String.join(delimiter, strings);
+		return Utility.concatStringsWithDelimiter(strings, delimiter);
 	}
 	public String concatWithDelimiter(Iterable<String> strings, String delimiter) throws InvalidArgumentException{
-		Utility.checkNull(delimiter);
-		Utility.checkNull(strings);
-		return String.join(delimiter, strings);
+		return Utility.concatStringsWithDelimiter(strings, delimiter);
 	}
 
 	public boolean compareStrings(String str1, String str2) throws InvalidArgumentException{

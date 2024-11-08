@@ -24,4 +24,16 @@ public class Utility {
 		checkNull(strBuilder);
 		return strBuilder.length();
 	}
+
+	public static String concatStringsWithDelimiter (String[] strings, String delimiter) throws InvalidArgumentException{
+		checkNull(delimiter);
+		checkNull(strings);
+		return String.join(delimiter, strings);
+	}
+
+	public static String concatStringsWithDelimiter (Iterable<String> strings, String delimiter) throws InvalidArgumentException{
+		checkNull(delimiter);
+		checkNull(strings);
+		return String.join(delimiter, strings);
+	}
 }

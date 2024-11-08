@@ -11,97 +11,156 @@ public class StringBuilderRunner {
     StringBuilderTask taskObject=new StringBuilderTask();
 
     public static void main(String args[]){
-        StringBuilderRunner runnerObject=new StringBuilderRunner();
-        int option;
-        Scanner scanner=new Scanner(System.in);
-        boolean flag =true;
-        StringBuilder strBuilder;
-        String str;
-        ArrayList<String> strs=new ArrayList<String>();
+        try(Scanner scanner = new Scanner(System.in)) {
+            StringBuilderRunner runnerObject=new StringBuilderRunner();
+            int option;
+            boolean flag =true;
+            StringBuilder strBuilder;
+            String str;
+            ArrayList<String> strs=new ArrayList<String>();
 
-        System.out.println("StringBuilder Tasks:");
-		System.out.println("1.Add a String");
-		System.out.println("2.Add 4 Strings Separated by #");
-		System.out.println("3.Insert a String Between 2 Strings");
-		System.out.println("4.Delete the first String");
-		System.out.println("5.Replace spaces with hyphens");
-		System.out.println("6.Reverse");
-		System.out.println("7.Delete characters at 6-8");
-		System.out.println("8.Replace characters at 6-8");
-		System.out.println("9.First index of #");
-		System.out.println("10.Last index of #");
+            System.out.println("StringBuilder Tasks:");
+            System.out.println("1.Add a String");
+            System.out.println("2.Add 4 Strings Separated by #");
+            System.out.println("3.Insert a String Between 2 Strings");
+            System.out.println("4.Delete the first String");
+            System.out.println("5.Replace spaces with hyphens");
+            System.out.println("6.Reverse");
+            System.out.println("7.Delete characters at 6-8");
+            System.out.println("8.Replace characters at 6-8");
+            System.out.println("9.First index of #");
+            System.out.println("10.Last index of #");
 
-        while(flag){
-            System.out.print("\nEnter Option:");
-			option=scanner.nextInt();
-			scanner.nextLine();
+            while(flag){
+                System.out.print("\nEnter Option:");
+            	option=scanner.nextInt();
+            	scanner.nextLine();
 
-            switch (option) {
-                case 1:
+                switch (option) {
+                    case 1:
+                        try {
+                            strBuilder=runnerObject.getStringBuilder();
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            System.out.print("Enter a String: ");
+                            str=scanner.nextLine();
+                            strBuilder=runnerObject.addString(strBuilder, str);
+                            System.out.println("Length after addition: "+Utility.getLength(strBuilder));
+                            System.out.println("Final String: "+strBuilder.toString());
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
+                    
+                    case 2:
+                        try {
+                            System.out.print("Enter a String: ");
+                            str=scanner.nextLine();
+                            strBuilder=runnerObject.getStringBuilder(str);
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            strs.clear();
+                            for(int i=0;i<4;i++){
+                                System.out.print("Enter String "+(i+1)+": ");
+                                strs.add(scanner.nextLine());
+                            }
+                            strBuilder=runnerObject.appendStringsWithHash(strBuilder, strs);
+                            System.out.println("Length after addition: "+Utility.getLength(strBuilder));
+                            System.out.println("Final String: "+strBuilder.toString());
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
+
+                    case 3:
+                        try {
+                            strs.clear();
+                            System.out.print("Enter String 1: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 2: ");
+                            strs.add(scanner.nextLine());
+                            strBuilder=runnerObject.getStringBuilder(strs, " ");
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            System.out.print("Enter a String: ");
+                            str=scanner.nextLine();
+                            strBuilder=runnerObject.insertAsSecondString(strBuilder, str);
+                            System.out.println("Length after insertion: "+Utility.getLength(strBuilder));
+                            System.out.println("Final String: "+strBuilder.toString());
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
+
+                    case 4:
+                        try {
+                            strs.clear();
+                            System.out.print("Enter String 1: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 2: ");
+                            strs.add(scanner.nextLine());
+                            strBuilder=runnerObject.getStringBuilder(strs, " ");
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            strBuilder=runnerObject.deleteFirstString(strBuilder);
+                            System.out.println("Length after deletion: "+Utility.getLength(strBuilder));
+                            System.out.println("Final String: "+strBuilder.toString());
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
+
+                    case 5:
+                        try {
+                            strs.clear();
+                            System.out.print("Enter String 1: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 2: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 3: ");
+                            strs.add(scanner.nextLine());
+                            strBuilder=runnerObject.getStringBuilder(strs, " ");
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            strBuilder=runnerObject.replaceSpaceWithHyphen(strBuilder);
+                            System.out.println("Length after replacement: "+Utility.getLength(strBuilder));
+                            System.out.println("Final String: "+strBuilder.toString());
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
+
+                    case 6:
+                        try {
+                            strs.clear();
+                            System.out.print("Enter String 1: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 2: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 3: ");
+                            strs.add(scanner.nextLine());
+                            strBuilder=runnerObject.getStringBuilder(strs, " ");
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            strBuilder=runnerObject.reversBuilder(strBuilder);
+                            System.out.println("Length after replacement: "+Utility.getLength(strBuilder));
+                            System.out.println("Final String: "+strBuilder.toString());
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
+
+                    case 7:
                     try {
-                        strBuilder=runnerObject.getStringBuilder();
-                        System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        System.out.print("Enter a String: ");
+                        System.out.print("Enter String of min length 10: ");
                         str=scanner.nextLine();
-                        strBuilder=runnerObject.addString(strBuilder, str);
-                        System.out.println("Length after addition: "+Utility.getLength(strBuilder));
-                        System.out.println("Final String: "+strBuilder.toString());
-                    } catch (InvalidArgumentException e) {
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
-                    break;
-                
-                case 2:
-                    try {
-                        System.out.print("Enter a String: ");
-                        str=scanner.nextLine();
+                        while(Utility.getLength(str)<10){
+                            System.out.print("Enter String of min length 10: ");
+                            str=scanner.nextLine();
+                        }
                         strBuilder=runnerObject.getStringBuilder(str);
                         System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        strs.clear();
-                        for(int i=0;i<4;i++){
-                            System.out.print("Enter String "+(i+1)+": ");
-                            strs.add(scanner.nextLine());
-                        }
-                        strBuilder=runnerObject.appendStringsWithHash(strBuilder, strs);
-                        System.out.println("Length after addition: "+Utility.getLength(strBuilder));
-                        System.out.println("Final String: "+strBuilder.toString());
-                    } catch (InvalidArgumentException e) {
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case 3:
-                    try {
-                        strs.clear();
-                        System.out.print("Enter String 1: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 2: ");
-                        strs.add(scanner.nextLine());
-                        strBuilder=runnerObject.getStringBuilder(strs, " ");
-                        System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        System.out.print("Enter a String: ");
-                        str=scanner.nextLine();
-                        strBuilder=runnerObject.insertAsSecondString(strBuilder, str);
-                        System.out.println("Length after insertion: "+Utility.getLength(strBuilder));
-                        System.out.println("Final String: "+strBuilder.toString());
-                    } catch (InvalidArgumentException e) {
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case 4:
-                    try {
-                        strs.clear();
-                        System.out.print("Enter String 1: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 2: ");
-                        strs.add(scanner.nextLine());
-                        strBuilder=runnerObject.getStringBuilder(strs, " ");
-                        System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        strBuilder=runnerObject.deleteFirstString(strBuilder);
+                        strBuilder=runnerObject.deleteThreeCharacters(strBuilder);
                         System.out.println("Length after deletion: "+Utility.getLength(strBuilder));
                         System.out.println("Final String: "+strBuilder.toString());
                     } catch (InvalidArgumentException e) {
@@ -110,19 +169,18 @@ public class StringBuilderRunner {
                     }
                     break;
 
-                case 5:
+                    case 8:
                     try {
-                        strs.clear();
-                        System.out.print("Enter String 1: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 2: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 3: ");
-                        strs.add(scanner.nextLine());
-                        strBuilder=runnerObject.getStringBuilder(strs, " ");
+                        System.out.print("Enter String of min length 10: ");
+                        str=scanner.nextLine();
+                        while(Utility.getLength(str)<10){
+                            System.out.print("Enter String of min length 10: ");
+                            str=scanner.nextLine();
+                        }
+                        strBuilder=runnerObject.getStringBuilder(str);
                         System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        strBuilder=runnerObject.replaceSpaceWithHyphen(strBuilder);
-                        System.out.println("Length after replacement: "+Utility.getLength(strBuilder));
+                        strBuilder=runnerObject.replaceThreeCharacters(strBuilder);
+                        System.out.println("Length after deletion: "+Utility.getLength(strBuilder));
                         System.out.println("Final String: "+strBuilder.toString());
                     } catch (InvalidArgumentException e) {
                         System.out.println(e.getMessage());
@@ -130,110 +188,54 @@ public class StringBuilderRunner {
                     }
                     break;
 
-                case 6:
-                    try {
-                        strs.clear();
-                        System.out.print("Enter String 1: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 2: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 3: ");
-                        strs.add(scanner.nextLine());
-                        strBuilder=runnerObject.getStringBuilder(strs, " ");
-                        System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        strBuilder=runnerObject.reversBuilder(strBuilder);
-                        System.out.println("Length after replacement: "+Utility.getLength(strBuilder));
-                        System.out.println("Final String: "+strBuilder.toString());
-                    } catch (InvalidArgumentException e) {
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
-                    break;
+                    case 9:
+                        try {
+                            strs.clear();
+                            System.out.print("Enter String 1: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 2: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 3: ");
+                            strs.add(scanner.nextLine());
+                            strBuilder=runnerObject.getStringBuilder(strs, "#");
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            System.out.println("First index of #: "+runnerObject.firstIndexOfHash(strBuilder));
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
 
-                case 7:
-                try {
-                    System.out.print("Enter String of min length 10: ");
-                    str=scanner.nextLine();
-                    while(Utility.getLength(str)<10){
-                        System.out.print("Enter String of min length 10: ");
-                        str=scanner.nextLine();
-                    }
-                    strBuilder=runnerObject.getStringBuilder(str);
-                    System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                    strBuilder=runnerObject.deleteThreeCharacters(strBuilder);
-                    System.out.println("Length after deletion: "+Utility.getLength(strBuilder));
-                    System.out.println("Final String: "+strBuilder.toString());
-                } catch (InvalidArgumentException e) {
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
+                    case 10:
+                        try {
+                            strs.clear();
+                            System.out.print("Enter String 1: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 2: ");
+                            strs.add(scanner.nextLine());
+                            System.out.print("Enter String 3: ");
+                            strs.add(scanner.nextLine());
+                            strBuilder=runnerObject.getStringBuilder(strs, "#");
+                            System.out.println("Initial length: "+Utility.getLength(strBuilder));
+                            System.out.println("Last index of #: "+runnerObject.lastIndexOfHash(strBuilder));
+                        } catch (InvalidArgumentException e) {
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+                        break;
+                    
+                    case 11:
+                        flag=false;
+                        break;
+
+                    default:
+                        System.out.println("Enter valid option...");
+                        break;
                 }
-                break;
-
-                case 8:
-                try {
-                    System.out.print("Enter String of min length 10: ");
-                    str=scanner.nextLine();
-                    while(Utility.getLength(str)<10){
-                        System.out.print("Enter String of min length 10: ");
-                        str=scanner.nextLine();
-                    }
-                    strBuilder=runnerObject.getStringBuilder(str);
-                    System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                    strBuilder=runnerObject.replaceThreeCharacters(strBuilder);
-                    System.out.println("Length after deletion: "+Utility.getLength(strBuilder));
-                    System.out.println("Final String: "+strBuilder.toString());
-                } catch (InvalidArgumentException e) {
-                    System.out.println(e.getMessage());
-                    e.printStackTrace();
-                }
-                break;
-
-                case 9:
-                    try {
-                        strs.clear();
-                        System.out.print("Enter String 1: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 2: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 3: ");
-                        strs.add(scanner.nextLine());
-                        strBuilder=runnerObject.getStringBuilder(strs, "#");
-                        System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        System.out.println("First index of #: "+runnerObject.firstIndexOfHash(strBuilder));
-                    } catch (InvalidArgumentException e) {
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
-                    break;
-
-                case 10:
-                    try {
-                        strs.clear();
-                        System.out.print("Enter String 1: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 2: ");
-                        strs.add(scanner.nextLine());
-                        System.out.print("Enter String 3: ");
-                        strs.add(scanner.nextLine());
-                        strBuilder=runnerObject.getStringBuilder(strs, "#");
-                        System.out.println("Initial length: "+Utility.getLength(strBuilder));
-                        System.out.println("Last index of #: "+runnerObject.lastIndexOfHash(strBuilder));
-                    } catch (InvalidArgumentException e) {
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
-                    break;
-                
-                case 11:
-                    flag=false;
-                    break;
-
-                default:
-                    System.out.println("Enter valid option...");
-                    break;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        scanner.close();
     }
 
     public StringBuilder getStringBuilder(){
@@ -241,12 +243,7 @@ public class StringBuilderRunner {
     }
 
     public StringBuilder getStringBuilder(String str){
-        try {
             return taskObject.createStringBuilder(str);
-        } catch (InvalidArgumentException e) {
-            e.printStackTrace();
-            return new StringBuilder();
-        }
     }
 
     public StringBuilder getStringBuilder(ArrayList<String> strs,String delimiter){
