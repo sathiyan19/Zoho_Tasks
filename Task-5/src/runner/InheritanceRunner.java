@@ -155,8 +155,8 @@ public class InheritanceRunner {
                     case 7:
                         // System.out.println("\nBirdAbstract Object: ");
                         // BirdAbstract birdAbstractObj=new BirdAbstract();
-                        System.out.println("\nParrotMod Object: ");
                         ParrotMod parrotModObj=new ParrotMod();
+                        System.out.println("\n"+parrotModObj.getName()+" Object: ");
                         parrotModObj.fly();
                         parrotModObj.speak();
                         break;
