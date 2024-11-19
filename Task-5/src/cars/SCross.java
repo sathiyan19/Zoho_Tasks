@@ -37,4 +37,8 @@ public class SCross extends Car{
     public String getColor(){
         return color;
     }
+
+    public void maintenance(){
+        System.out.println("Maruti SCross under maintenance");
+    }
 }

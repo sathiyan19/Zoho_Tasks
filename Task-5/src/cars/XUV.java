@@ -6,6 +6,10 @@ public class XUV extends Car{
     private String model;
     private String color;
 
+    public XUV(){
+        super("super class constructor in XUV");
+    }
+
     public void setAirbags(int airbags){
         this.airbags=airbags;
     }

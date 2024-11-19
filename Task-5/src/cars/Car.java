@@ -5,6 +5,12 @@ public class Car {
     private String engineNumber;
     private String type;
 
+    public Car(){}
+
+    public Car(String str){
+        System.out.println("Constructor: "+str);
+    }
+
     public void setYearOfMake(int year){
         yearOfMake=year;
     }
@@ -27,5 +33,9 @@ public class Car {
 
     public String getType(){
         return type;
+    }
+
+    public void maintenance(){
+        System.out.println("Car under maintenance");
     }
 }
