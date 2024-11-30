@@ -1,5 +1,7 @@
 package utility;
 
+import java.util.List;
+
 import exception.*;
 
 public class Utility {
@@ -23,6 +25,11 @@ public class Utility {
     public static int getLength(StringBuilder strBuilder) throws InvalidArgumentException{
 		checkNull(strBuilder);
 		return strBuilder.length();
+	}
+
+    public static <T> int getLength(List<T> list) throws InvalidArgumentException{
+		checkNull(list);
+		return list.size();
 	}
 
 	public static String concatStringsWithDelimiter (String[] strings, String delimiter) throws InvalidArgumentException{
